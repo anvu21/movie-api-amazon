@@ -27,7 +27,7 @@ export const InputMovie = () => {
           console.log("Submitted value: " + JSON.stringify(values));
 
           try {
-            const url = "/movies";
+            const url = "https://movie-api-lehigh.herokuapp.com/movies";
             console.log(url);
             // const { values: res } = await axios.post(url, values);
             // console.log(res)
