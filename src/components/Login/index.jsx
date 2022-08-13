@@ -24,9 +24,18 @@ const Login = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const rootUrl = process.env.NODE_ENV === "production" ? "https://m8-backend-test.herokuapp.com" : ""
-			const url = `${rootUrl}/login`;
-			const { data: res } = await axios.post(url, data,{withCredentials: true});
+			
+			const url = `https://movie-api-lehigh.herokuapp.com/login`;
+			const { data: res } = await axios.post(url, data,{
+				headers: {
+					'Access-Control-Allow-Origin': '*',
+					'Access-Control-Allow-Headers': '*',
+					'Access-Control-Allow-Credentials': 'true'
+				  }
+				  
+				},{withCredentials: true}
+				  );
+				  //,{withCredentials: true}
 			console.log(res)
 			if (res.status ===401){
 				setError("Wrong username or password");
