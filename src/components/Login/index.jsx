@@ -24,8 +24,8 @@ const Login = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			
-			const url = `https://movie-api-lehigh.herokuapp.com/login`;
+
+			const url = `https://movie-api-lehigh.herokuapp.com/_users/login`;
 			const { data: res } = await axios.post(url, data,{
 				headers: {
 					'Access-Control-Allow-Origin': '*',
