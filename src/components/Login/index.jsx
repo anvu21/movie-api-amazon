@@ -24,7 +24,8 @@ const Login = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const url = "/_users/login";
+			const rootUrl = process.env.NODE_ENV === "production" ? "https://m8-backend-test.herokuapp.com" : ""
+			const url = `${rootUrl}/login`;
 			const { data: res } = await axios.post(url, data,{withCredentials: true});
 			console.log(res)
 			if (res.status ===401){
