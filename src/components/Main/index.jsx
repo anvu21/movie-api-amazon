@@ -21,7 +21,7 @@ const Main = () => {
 		if (!cookies.jwt) {
 		  navigate("/login");
 		} else {
-		  const { data } = await axios.post("/_users/check", {},	{
+		  const { data } = await axios.post("https://movie-api-lehigh.herokuapp.com/_users/check", {},	{
 			  withCredentials: true,
 			}
 			
@@ -42,7 +42,7 @@ const Main = () => {
 	  };
 	const getMovieQuery = async () => {
 		try {
-			const response = await fetch("/movies");
+			const response = await fetch("https://movie-api-lehigh.herokuapp.com/movies");
 			const jsonData = await response.json();
 			//console.log("test");
 			//console.log(jsonData);

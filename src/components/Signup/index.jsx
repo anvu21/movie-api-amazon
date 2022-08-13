@@ -27,7 +27,7 @@ const Signup = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const url = "/_users";
+			const url = "https://movie-api-lehigh.herokuapp.com/_users";
 			const { data: res } = await axios.post(url, data);
 			navigate("/login");
 			console.log(res.message);
