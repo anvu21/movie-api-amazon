@@ -17,24 +17,36 @@ const Main = () => {
 	const [name, setName] = useState([""]);
 	const navigate = useNavigate();
 	const [cookies, setCookie, removeCookie] = useCookies([]);
+
 	const verifyUser = async () => {
 		const info=localStorage.getItem("jwt")
-		if (info) {
+		console.log("info")
+		console.log(info)
+		if (!info) {
 		  navigate("/login");
 		} else {
-		  const { data } = await axios.post("https://movie-api-lehigh.herokuapp.com/_users/check", (info),	{
+		  const { data } = await axios.post("https://movie-api-lehigh.herokuapp.com/_users/check", info,{
+			headers: {
+				'Access-Control-Allow-Origin': '*',
+				'Access-Control-Allow-Headers': '*',
+				'Access-Control-Allow-Credentials': 'true'
+			  }
+			  
+			},	{
 			  withCredentials: true,
 			}
-			
+
 		  );
 		  console.log(data)
 		  if (!data.status) {
 			console.log("fail")
 			removeCookie("jwt");
-			localStorage.clear;
-
-			navigate("/login");
+			localStorage.clear();
+			
+			//navigate("/login");
 		  } else{
+			console.log("data")
+
 			console.log(data)
 			setName(data.user);
 			toast(`Hello ${data.user} `, {

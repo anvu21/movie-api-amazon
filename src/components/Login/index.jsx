@@ -11,7 +11,9 @@ const Login = () => {
 	const [cookies] = useCookies([]);
 	const navigate = useNavigate();
 	useEffect(() => {
-	  if (cookies.jwt) {
+		const info=localStorage.getItem("jwt")
+
+	  if (info) {
 		navigate("/");
 	  }
 	}, []);
@@ -42,7 +44,7 @@ const Login = () => {
 
 			} else{
 			//localStorage.setItem("token", res._id);
-			localStorage.setItem("jwt", res.jwt);
+			localStorage.setItem("jwt", res);
 			//localStorage.setItem("likes_movie", res.likes_movie);
 
 			window.location = "/";
