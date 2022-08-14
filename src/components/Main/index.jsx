@@ -18,10 +18,11 @@ const Main = () => {
 	const navigate = useNavigate();
 	const [cookies, setCookie, removeCookie] = useCookies([]);
 	const verifyUser = async () => {
-		if (!cookies.jwt) {
+		const info=localStorage.getItem("jwt")
+		if (info) {
 		  navigate("/login");
 		} else {
-		  const { data } = await axios.post("https://movie-api-lehigh.herokuapp.com/_users/check", {},	{
+		  const { data } = await axios.post("https://movie-api-lehigh.herokuapp.com/_users/check", (info),	{
 			  withCredentials: true,
 			}
 			
@@ -30,6 +31,8 @@ const Main = () => {
 		  if (!data.status) {
 			console.log("fail")
 			removeCookie("jwt");
+			localStorage.clear;
+
 			navigate("/login");
 		  } else{
 			console.log(data)

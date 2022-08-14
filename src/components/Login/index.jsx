@@ -42,8 +42,8 @@ const Login = () => {
 
 			} else{
 			//localStorage.setItem("token", res._id);
-			localStorage.setItem("name", res.name);
-			localStorage.setItem("likes_movie", res.likes_movie);
+			localStorage.setItem("jwt", res.jwt);
+			//localStorage.setItem("likes_movie", res.likes_movie);
 
 			window.location = "/";
 			}
