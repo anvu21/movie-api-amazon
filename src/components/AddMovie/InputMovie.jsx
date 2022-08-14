@@ -27,15 +27,26 @@ export const InputMovie = () => {
           console.log("Submitted value: " + JSON.stringify(values));
 
           try {
-            const url = "/movies";
+            const url = "https://movie-api-lehigh.herokuapp.com/movies";
             console.log(url);
+            const { values: res } = await axios.post(url, values,{
+              headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Headers': '*',
+                'Access-Control-Allow-Credentials': 'true'
+                }
+                
+              },{withCredentials: true}
+                );
             // const { values: res } = await axios.post(url, values);
             // console.log(res)
-            const response = await fetch("/movies", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(values),
-            });
+
+
+          //  const response = await fetch("https://movie-api-lehigh.herokuapp.com/movies", {
+           //   method: "POST",
+           //   headers: { "Content-Type": "application/json" },
+           //   body: JSON.stringify(values),
+          //  });
 
             console.log("success");
           } catch (error) {
