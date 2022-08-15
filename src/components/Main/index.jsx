@@ -37,13 +37,13 @@ const Main = () => {
 			}
 
 		  );
-		  console.log(data)
+		  //console.log(data)
 		  if (!data.status) {
 			console.log("fail")
 			removeCookie("jwt");
 			localStorage.clear();
 			
-			//navigate("/login");
+			navigate("/login");
 		  } else{
 			console.log("data")
 
